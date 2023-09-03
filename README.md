@@ -1,58 +1,72 @@
-# Comandos Git 
+## Staging and Commit
+    a = add                           # Stage changes
+    aa = add -A                       # Stage all changes, including untracked files
+    ap = add -p                       # Interactively stage changes
 
-## Configuração
+    c = commit --verbose              # Commit with verbose output
+    ca = commit -a --verbose          # Commit all changes with verbose output
+    cm = commit -m                    # Commit with a specified message
+    cam = commit -a -m                # Commit all changes with a specified message
+    m = commit --amend --verbose      # Amend the last commit with verbose output
 
-1. `git config --global user.name "Seu Nome"` - Configura o nome do usuário globalmente.
-2. `git config --global user.email "seu.email@example.com"` - Configura o email do usuário globalmente.
-3. `git config --global core.editor "editor"` - Configura o editor de texto padrão para mensagens de commit.
+## Difference
+    d = diff                          # Show the difference between the working directory and last commit
+    ds = diff --stat                  # Show a summary of changes as a stat
+    dc = diff --cached                # Show the difference between the index (staged changes) and last commit
 
-## Iniciar um Repositório
+## Status
+    s = status -s                    # Show short status of changed files
+    st = status                       # Show a detailed status
 
-1. `git init` - Inicializa um novo repositório Git local.
-2. `git clone <URL>` - Clona um repositório remoto existente para o seu computador.
+## Checkout and Branch
+    co = checkout                     # Checkout a branch or commit
+    cob = checkout -b                 # Create and checkout a new branch
 
-## Gerenciamento de Alterações
+## Unstage
+    unstage = restore --staged        # Unstage changes from the index
 
-1. `git status` - Mostra o status das alterações no diretório de trabalho.
-2. `git add <arquivo>` - Adiciona um arquivo específico à área de preparação (staging).
-3. `git add .` - Adiciona todas as alterações do diretório de trabalho à área de preparação.
-4. `git commit -m "mensagem do commit"` - Cria um novo commit com as alterações preparadas.
-5. `git diff` - Mostra as diferenças entre o diretório de trabalho e a área de preparação.
-6. `git log` - Exibe o histórico de commits.
-7. `git log --oneline` - Exibe o histórico de commits em uma linha por commit.
-8. `git log --graph` - Exibe o histórico de commits em forma de gráfico.
+## Branch Listing
+    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"  # List branches sorted by author date
+
+## List Aliases
+    la = "!git config -l | grep alias | cut -c 7-"  # List Git aliases
+
+## Configuration
+    config-name = config --global user.name "Your Name"                # Set global Git user name
+    config-email = config --global user.email "your.email@example.com"  # Set global Git user email
+    config-editor = config --global core.editor "editor"                # Set global Git text editor
+
+## Repository Initialization
+    init = init                        # Initialize a new Git repository
+    clone = clone                      # Clone a remote repository
+
+## Change Management
+    git-status = status                # Alias for 'status'
+    git-add = add                      # Alias for 'add'
+    git-commit = commit                # Alias for 'commit'
+    git-diff = diff                    # Alias for 'diff'
 
 ## Branches
+    git-branch = branch                # Alias for 'branch'
+    git-checkout = checkout            # Alias for 'checkout'
+    git-merge = merge                  # Alias for 'merge'
 
-1. `git branch` - Lista todos os branches locais e mostra o branch atual.
-2. `git branch <nome_branch>` - Cria um novo branch com o nome especificado.
-3. `git checkout <nome_branch>` - Muda para o branch especificado.
-4. `git merge <nome_branch>` - Mescla o branch atual com o branch especificado.
-5. `git branch -d <nome_branch>` - Deleta o branch especificado (deve estar mesclado).
-6. `git branch -D <nome_branch>` - Deleta o branch especificado mesmo que não esteja mesclado.
+## Update and Synchronize
+    git-fetch = fetch                  # Alias for 'fetch'
+    git-pull = pull                    # Alias for 'pull'
+    git-push = push                    # Alias for 'push'
 
-## Atualização e Sincronização
+## Ignore Files
+    git-ignore = "!echo 'file_or_directory_to_ignore' >> .gitignore"  # Ignore a file or directory in .gitignore
 
-1. `git fetch` - Busca as atualizações do repositório remoto (não mescla automaticamente).
-2. `git pull` - Busca as atualizações e mescla automaticamente com o branch atual.
-3. `git push <nome_remoto> <nome_branch>` - Envia os commits locais para o repositório remoto.
+## Undo Changes
+    git-reset = reset                  # Alias for 'reset'
+    git-revert = revert                # Alias for 'revert'
 
-## Ignorar Arquivos
-
-1. Criar um arquivo `.gitignore` e listar os arquivos/diretórios que devem ser ignorados.
-
-## Desfazer Alterações
-
-1. `git reset HEAD <arquivo>` - Remove um arquivo da área de preparação.
-2. `git checkout -- <arquivo>` - Desfaz as alterações de um arquivo no diretório de trabalho.
-3. `git revert <hash_do_commit>` - Cria um novo commit revertendo as alterações do commit especificado.
-
-## Outros
-
-1. `git remote add <nome_remoto> <URL>` - Adiciona um repositório remoto ao seu repositório local.
-2. `git remote -v` - Lista os repositórios remotos configurados.
-3. `git show <hash_do_commit>` - Mostra detalhes de um commit específico.
-4. `git stash` - Salva as alterações atuais em uma pilha de mudanças temporárias (stash).
-5. `git stash apply` - Aplica a última mudança da pilha de stash.
-6. `git help` - Exibe a documentação de ajuda do Git.
-
+## Others
+    git-remote-add = remote add        # Alias for 'remote add'
+    git-remote-list = remote -v        # Alias for 'remote -v'
+    git-show = show                    # Alias for 'show'
+    git-stash = stash                  # Alias for 'stash'
+    git-stash-apply = stash apply      # Alias for 'stash apply'
+    git-help = help                    # Alias for 'help'
