@@ -1,72 +1,247 @@
-## Staging and Commit (Preparação e Confirmação)
-    a = add                           # Stage changes (Preparar alterações)
-    aa = add -A                       # Stage all changes, including untracked files (Preparar todas as alterações, incluindo arquivos não rastreados)
-    ap = add -p                       # Interactively stage changes (Preparar interativamente as alterações)
+## Comandos Basicos Git
 
-    c = commit --verbose              # Commit with verbose output (Confirmar com saída detalhada)
-    ca = commit -a --verbose          # Commit all changes with verbose output (Confirmar todas as alterações com saída detalhada)
-    cm = commit -m                    # Commit with a specified message (Confirmar com uma mensagem específica)
-    cam = commit -a -m                # Commit all changes with a specified message (Confirmar todas as alterações com uma mensagem específica)
-    m = commit --amend --verbose      # Amend the last commit with verbose output (Emendar o último commit com saída detalhada)
+```bash
+git init  #Inicia um novo repositorio git
+```
 
-## Difference (Diferenças)
-    d = diff                          # Show the difference between the working directory and last commit (Mostrar a diferença entre o diretório de trabalho e o último commit)
-    ds = diff --stat                  # Show a summary of changes as a stat (Mostrar um resumo das alterações como estatísticas)
-    dc = diff --cached                # Show the difference between the index (staged changes) and last commit (Mostrar a diferença entre o índice e o último commit)
+```bash
+git clone  #Copia um repositorio git
+```
 
-## Status
-    s = status -s                    # Show short status of changed files (Mostrar um status curto dos arquivos modificados)
-    st = status                       # Show a detailed status (Mostrar um status detalhado)
+```bash
+git status  #Informa o estado atual do repositorio
+```
 
-## Checkout e Branch (Checkout and Branch)
-    co = checkout                     # Checkout a branch or commit (Fazer checkout de um branch ou commit)
-    cob = checkout -b                 # Create and checkout a new branch (Criar e fazer checkout de um novo branch)
+```bash
+git add  #Adiciona um arquivo ao repositorio
 
-## Desfazer o Stage (Unstage)
-    unstage = restore --staged        # Unstage changes from the index (Desfazer o stage das alterações no índice)
+git add .  #Adiciona todos os arquivos ao repositorio
+```
 
-## Listagem de Branches (Branch Listing)
-    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"  # List branches sorted by author date (Listar branches ordenados por data do autor)
+```bash
+git commit -m "Mensagem"  #Cria um commit com uma mensagem
+```
 
-## Listar Aliases (List Aliases)
-    la = "!git config -l | grep alias | cut -c 7-"  # List Git aliases (Listar aliases do Git)
+```bash
+git push  #Envia os commits para o repositorio remoto
+```
 
-## Configuração (Configuration)
-    config-name = config --global user.name "Seu Nome"                # Set global Git user name (Definir o nome de usuário Git global)
-    config-email = config --global user.email "seu.email@example.com"  # Set global Git user email (Definir o email de usuário Git global)
-    config-editor = config --global core.editor "editor"                # Set global Git text editor (Definir o editor de texto Git global)
+```bash
+git pull  #Baixa as alterações do repositorio remoto
+```
 
-## Inicialização de Repositório (Repository Initialization)
-    init = init                        # Initialize a new Git repository (Inicializar um novo repositório Git)
-    clone = clone                      # Clone a remote repository (Clonar um repositório remoto)
+```bash
+git fetch  #Baixa as alterações do repositorio remoto
+```
 
-## Gerenciamento de Mudanças (Change Management)
-    git-status = status                # Alias for 'status' (Alias para 'status')
-    git-add = add                      # Alias for 'add' (Alias para 'add')
-    git-commit = commit                # Alias for 'commit' (Alias para 'commit')
-    git-diff = diff                    # Alias for 'diff' (Alias para 'diff')
+```bash
+git branch  #Lista as branchs do repositorio
+```
 
-## Branches 
-    git-branch = branch                # Alias for 'branch' (Alias para 'branch')
-    git-checkout = checkout            # Alias for 'checkout' (Alias para 'checkout')
-    git-merge = merge                  # Alias for 'merge' (Alias para 'merge')
+```bash
+git checkout "Nome da branch"  #Muda para a branch informada
+```
 
-## Atualização e Sincronização (Update and Synchronize)
-    git-fetch = fetch                  # Alias for 'fetch' (Alias para 'fetch')
-    git-pull = pull                    # Alias for 'pull' (Alias para 'pull')
-    git-push = push                    # Alias for 'push' (Alias para 'push')
+```bash
+git merge "Nome da branch"  #Faz o a mesclagem da branch informada com a branch atual
+```
 
-## Ignorar Arquivos ( Ignore Files)
-    git-ignore = "!echo 'arquivo_ou_diretório_a_ignorar' >> .gitignore"  # Ignore a file or directory in .gitignore (Ignorar um arquivo ou diretório no .gitignore)
+## Comandos de Configuração
 
-## Desfazer Alterações (Undo Changes)
-    git-reset = reset                  # Alias for 'reset' (Alias para 'reset')
-    git-revert = revert                # Alias for 'revert' (Alias para 'revert')
+```bash
+git config --global user.name "Nome"  #Configura o nome do usuario globalmente
+```
 
-## Outros (Others)
-    git-remote-add = remote add        # Alias for 'remote add' (Alias para 'remote add')
-    git-remote-list = remote -v        # Alias for 'remote -v' (Alias para 'remote -v')
-    git-show = show                    # Alias for 'show' (Alias para 'show')
-    git-stash = stash                  # Alias for 'stash' (Alias para 'stash')
-    git-stash-apply = stash apply      # Alias for 'stash apply' (Alias para 'stash apply')
-    git-help = help                    # Alias for 'help' (Alias para 'help')
+```bash
+git config --global user.email "Email"  #Configura o email do usuario globalmente
+```
+
+```bash
+git config user.name "Nome"  #Configura o nome do usuario localmente
+```
+
+```bash
+git config user.email "Email"  #Configura o email do usuario localmente
+```
+
+```bash
+git config --global core.editor "Nome do editor"  #Configura o editor de texto globalmente
+```
+
+```bash
+git config core.editor "Nome do editor"  #Configura o editor de texto localmente
+```
+
+```bash
+git config --global alias."Nome do alias" "Comando"  #Cria um alias globalmente
+```
+
+## Comandos de Logs
+
+```bash
+git log  #Mostra o historico de commits
+```
+
+```bash
+git log --decorate  #Mostra o historico de commits com informações adicionais
+```
+
+```bash
+git log --author="Nome do autor"  #Mostra o historico de commits de um autor especifico
+```
+
+```bash
+git shortlog  #Mostra o historico de commits de forma resumida
+```
+
+```bash
+git shortlog -sn  #Mostra o historico de commits de forma resumida e ordenada por quantidade de commits
+```
+
+```bash
+git log --graph  #Mostra o historico de commits de forma grafica
+```
+
+```bash
+git show "Hash do commit"  #Mostra as alterações do commit informado
+```
+
+## Comandos de Diferenças
+
+```bash
+git diff  #Mostra as alterações feitas nos arquivos
+```
+
+```bash
+git diff --name-only  #Mostra apenas os nomes dos arquivos alterados
+```
+
+```bash
+git diff "Hash do commit"  #Mostra as alterações feitas no commit informado
+```
+
+```bash
+git diff "Hash do commit" "Hash do commit"  #Mostra as alterações feitas entre os commits informados
+```
+
+```bash
+git diff "Hash do commit" "Hash do commit" --name-only  #Mostra apenas os nomes dos arquivos alterados entre os commits informados
+```
+
+## Comandos de Desfazer
+
+```bash
+git checkout "Nome do arquivo"  #Desfaz as alterações feitas no arquivo informado
+```
+
+```bash
+git reset HEAD "Nome do arquivo"  #Retira o arquivo informado da staged area
+```
+
+```bash
+git reset --soft "Hash do commit"  #Retorna o repositorio ao estado do commit informado
+```
+
+```bash
+git reset --mixed "Hash do commit"  #Retorna o repositorio ao estado do commit informado e retira os arquivos da staged area
+```
+
+```bash
+git reset --hard "Hash do commit"  #Retorna o repositorio ao estado do commit informado e retira os arquivos da staged area e do working directory
+```
+
+## Comandos de Tags
+
+```bash
+git tag  #Lista as tags
+```
+
+```bash
+git tag -a "Nome da tag" -m "Mensagem"  #Cria uma tag anotada
+```
+
+```bash
+git tag -d "Nome da tag"  #Deleta a tag informada
+```
+
+```bash
+git push origin "Nome da tag"  #Envia a tag informada para o repositorio remoto
+```
+
+```bash
+git push origin --tags  #Envia todas as tags para o repositorio remoto
+```
+
+```bash
+git checkout "Nome da tag"  #Muda para a tag informada
+```
+
+## Comandos de Branchs
+
+```bash
+git branch "Nome da branch"  #Cria uma nova branch
+```
+
+```bash
+git branch -D "Nome da branch"  #Deleta a branch informada
+```
+
+```bash
+git checkout -b "Nome da branch"  #Cria uma nova branch e muda para ela
+```
+
+```bash
+git merge "Nome da branch"  #Faz o a mesclagem da branch informada com a branch atual
+```
+
+```bash
+git rebase "Nome da branch"  #Faz o rebase da branch informada com a branch atual
+```
+
+## Comandos de Stash
+
+```bash
+git stash  #Guarda as alterações feitas no working directory
+```
+
+```bash
+git stash list  #Lista os stashs
+```
+
+```bash
+git stash apply  #Aplica o ultimo stash
+```
+
+```bash
+git stash apply "Nome do stash"  #Aplica o stash informado
+```
+
+```bash
+git stash drop  #Deleta o ultimo stash
+```
+
+```bash
+git stash drop "Nome do stash"  #Deleta o stash informado
+```
+
+```bash
+git stash pop  #Aplica o ultimo stash e o deleta
+```
+
+```bash
+git stash pop "Nome do stash"  #Aplica o stash informado e o deleta
+```
+
+## Comandos de Rebase
+
+```bash
+git rebase "Nome da branch"  #Faz o rebase da branch informada com a branch atual
+```
+
+```bash
+git rebase --continue  #Continua o rebase apos resolver os conflitos
+```
+
+```bash
+git rebase --abort  #Cancela o rebase
+```
